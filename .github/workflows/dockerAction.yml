@@ -1,0 +1,35 @@
+name: Docker Action
+on: [push]
+
+jobs:
+  docker_action_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Docker action step
+      id: mmcdocker
+      uses: mchirico/docker-action@v1
+      with:
+        who-to-greet: 'Mona the Octocat'
+      env: # For ssh
+        id_rsa: ${{ secrets.SSH_PRIVATE_KEY }}
+        user: ${{ secrets.USER }}
+        server: ${{ secrets.SERVER }}
+
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.mmcdocker.outputs.time }}"
+
+
+    - name: Where am I
+      run: pwd
+
+    - name: What is here?
+      run: find .
+
+    - name: Garbage
+      run: cat garbage

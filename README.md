@@ -1,29 +1,25 @@
 # docker-action
 
 
+```yaml
+name: Docker Action
+on: [push]
 
-## Build with vendor
-```
-export GO111MODULE=on
-go mod init
-# Below will put all packages in a vendor folder
-go mod vendor
-
-
-
-go test -v -mod=vendor ./...
-
-# Don't forget the "." in "./cmd/script" below
-go build -v -mod=vendor ./...
-```
-
-
-## Don't forget golint
-
-```
-
-golint -set_exit_status $(go list ./... | grep -v /vendor/)
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: Hello world action step
+      id: hello
+      uses: mchirico/docker-action@v1
+      with:
+        who-to-greet: 'Mona the Octocat'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
 
 ```
+# Sample output:
 
-
+![image](https://user-images.githubusercontent.com/755710/75095859-453f7300-5567-11ea-8203-9169a9ad45fb.png)

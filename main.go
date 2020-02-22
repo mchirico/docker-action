@@ -16,15 +16,12 @@ limitations under the License.
 package main
 
 import (
-  "fmt"
-  "github.com/mchirico/docker-action/pkg"
-  "os"
-  "time"
-
+	"fmt"
+	"github.com/mchirico/docker-action/pkg"
+	"os"
 )
 
 func main() {
-  args := os.Args[1:]
-  fmt.Printf("here: %v\n",pkg.Speak(args))
-  fmt.Printf("::set-output name=time::%s\n",time.Now())
+	args := os.Args[1:]
+	fmt.Printf("::set-output name=time::%s\n", pkg.Speak(args))
 }
