@@ -4,7 +4,7 @@ on: [push]
 jobs:
   docker_action_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to run an ssh client
     steps:
 
     - name: Check out code
@@ -28,8 +28,3 @@ jobs:
     - name: Where am I
       run: pwd
 
-    - name: What is here?
-      run: find .
-
-    - name: Garbage
-      run: cat garbage
