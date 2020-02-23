@@ -12,7 +12,7 @@ jobs:
 
     - name: Docker action step
       id: mmcdocker
-      uses: mchirico/docker-action@v1
+      uses: mchirico/ssh-action@v1
       with:
         who-to-greet: 'Mona the Octocat'
       env: # For ssh

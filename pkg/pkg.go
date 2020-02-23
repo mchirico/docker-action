@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/mchirico/docker-action/ssh"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"time"
@@ -40,6 +41,11 @@ func WriteEnv()  {
 	d1 := []byte(result)
 	ioutil.WriteFile("id_rsa", d1, 0600)
 
-	ssh.RunME()
+	if result != "" {
+		ssh.RunME()
+	} else {
+		log.Printf("Environment variable id_rsa is blank")
+	}
+
 
 }
