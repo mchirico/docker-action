@@ -23,3 +23,20 @@ jobs:
 # Sample output:
 
 ![image](https://user-images.githubusercontent.com/755710/75095859-453f7300-5567-11ea-8203-9169a9ad45fb.png)
+
+
+
+# How to test
+
+The program works off of environment variables.
+
+```
+export server='35.231.142.120:22'
+export user=testBot3
+export id_rsa=`cat ./testBot.id_rsa`
+
+
+# Now you can run
+go run main.go
+
+```
